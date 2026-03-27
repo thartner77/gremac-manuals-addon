@@ -1,9 +1,11 @@
-# Gremac eZero Gebruiksaanwijzing
-
-- **ID:** 4674
-- **Slug:** gremac-ezero-gebruiksaanwijzing
-
 ---
+id: 4022
+lang: de
+slug: gremac-ezero-betriebsanleitung
+title: "Gremac eZero Betriebsanleitung"
+---
+
+# Gremac eZero Betriebsanleitung
 
 Gremac eZero
 

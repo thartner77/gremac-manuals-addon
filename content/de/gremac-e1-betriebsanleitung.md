@@ -1,13 +1,17 @@
-# Εγχειρίδιο οδηγιών Gremac e2+
-
-- **ID:** 7955
-- **Slug:** %ce%b5%ce%b3%cf%87%ce%b5%ce%b9%cf%81%ce%af%ce%b4%ce%b9%ce%bf-%ce%bf%ce%b4%ce%b7%ce%b3%ce%b9%cf%8e%ce%bd-gremac-e2
-
+---
+id: 4024
+lang: de
+slug: gremac-e1-betriebsanleitung
+title: "Gremac e1 Betriebsanleitung"
 ---
 
-Gremac e2r (Radfahrzeug)
+# Gremac e1 Betriebsanleitung
 
-Gremac e2k (Raupenfahrzeug)
+Gremac e1r (Radfahrzeug)
+
+Gremac e1k (Raupenfahrzeug)
+
+Gremac e1h (Hakenlift)
 
 Inhaltsverzeichnis
 
@@ -502,7 +506,7 @@ Beachten Sie die Einlagerungsvorschriften des jeweiligen Herstellers des Stromer
 
 Maschinenübersicht
 
-Gremac e2+r (Radmobil)
+Gremac e1r (radmobil)
 
 
 
@@ -555,7 +559,7 @@ Gremac e2+r (Radmobil)
 
                                             
             
-12
+2
            
               
                
@@ -702,28 +706,6 @@ Gremac e2+r (Radmobil)
                
             
 
-            
-            
-
-               
-
-                                            
-            
-14
-           
-              
-               
-
-            
-  
-            
-               
-
-               
-               
-               
-            
-
                   
 
    
@@ -760,51 +742,51 @@ Gremac e2+r (Radmobil)
 
                                             
             
-12
-           
-              
-               
-
-            
-  
-            
-               
-
-               
-               
-               
-            
-
-            
-            
-
-               
-
-                                            
-            
-2
-           
-              
-               
-
-            
-  
-            
-               
-
-               
-               
-               
-            
-
-            
-            
-
-               
-
-                                            
-            
 11
+           
+              
+               
+
+            
+  
+            
+               
+
+               
+               
+               
+            
+
+            
+            
+
+               
+
+                                            
+            
+10
+           
+              
+               
+
+            
+  
+            
+               
+
+               
+               
+               
+            
+
+            
+            
+
+               
+
+                                            
+            
+9
            
               
                
@@ -914,7 +896,7 @@ Gremac e2+r (Radmobil)
 
                                             
             
-9
+8
            
               
                
@@ -936,29 +918,7 @@ Gremac e2+r (Radmobil)
 
                                             
             
-10
-           
-              
-               
-
-            
-  
-            
-               
-
-               
-               
-               
-            
-
-            
-            
-
-               
-
-                                            
-            
-13
+12
            
               
                
@@ -982,515 +942,29 @@ Gremac e2+r (Radmobil)
 
 Zugeinrichtung mit Handbremse und Stützrad
 
-Linke Klappe (Schaltschrank)
+Stützfuß
 
-Rechte Klappe (Stromerzeuger)
+Rechte Klappe (Stellplatz für Stromerzeuger)
+
+Bunker
 
 Siebtrommel mit Reinigungsbürste
 
 Förderband für Siebgut
 
-Klappbarer Haldenförderer für Siebgut
+Förderband für Überkorn
 
-Klappbarer Haldenförderer für Überkorn
-
-Bunker (maximale Beladung: 500 kg)
-
-Stützfuß Maschinenfront
-
-Stützfüße Maschinenheck (Option)
-
-Bedieneinheit
-
-Sammelband unterhalb der Siebtrommel 
-
-Fahrwerk (mit Straßenzulassung) oder Kettenlaufwerk
-
-Seilwinde für Förderband für Überkorn
-
-Seilwinde für Förderband für Siebgut
-
-Gremac e2+k (Kettenmobil)
-
-
-
-
-
-   
-
-      
-
-      
-
-
-      
-
-   
-
-
-   
-
-      
-
-         
-
-         
-            
-
-               
-
-                                            
-            
-1
-           
-              
-               
-
-            
-  
-            
-               
-
-               
-               
-               
-            
-
-            
-            
-
-               
-
-                                            
-            
-2
-           
-              
-               
-
-            
-  
-            
-               
-
-               
-               
-               
-            
-
-            
-            
-
-               
-
-                                            
-            
-3
-           
-              
-               
-
-            
-  
-            
-               
-
-               
-               
-               
-            
-
-            
-            
-
-               
-
-                                            
-            
-4
-           
-              
-               
-
-            
-  
-            
-               
-
-               
-               
-               
-            
-
-            
-            
-
-               
-
-                                            
-            
-5
-           
-              
-               
-
-            
-  
-            
-               
-
-               
-               
-               
-            
-
-            
-            
-
-               
-
-                                            
-            
-6
-           
-              
-               
-
-            
-  
-            
-               
-
-               
-               
-               
-            
-
-            
-            
-
-               
-
-                                            
-            
-7
-           
-              
-               
-
-            
-  
-            
-               
-
-               
-               
-               
-            
-
-            
-            
-
-               
-
-                                            
-            
-8
-           
-              
-               
-
-            
-  
-            
-               
-
-               
-               
-               
-            
-
-                  
-
-   
-
-
-
-
-
-
-
-
-   
-
-      
-
-      
-
-
-      
-
-   
-
-
-   
-
-      
-
-         
-
-         
-            
-
-               
-
-                                            
-            
-10
-           
-              
-               
-
-            
-  
-            
-               
-
-               
-               
-               
-            
-
-            
-            
-
-               
-
-                                            
-            
-1
-           
-              
-               
-
-            
-  
-            
-               
-
-               
-               
-               
-            
-
-            
-            
-
-               
-
-                                            
-            
-9
-           
-              
-               
-
-            
-  
-            
-               
-
-               
-               
-               
-            
-
-            
-            
-
-               
-
-                                            
-            
-4
-           
-              
-               
-
-            
-  
-            
-               
-
-               
-               
-               
-            
-
-            
-            
-
-               
-
-                                            
-            
-5
-           
-              
-               
-
-            
-  
-            
-               
-
-               
-               
-               
-            
-
-            
-            
-
-               
-
-                                            
-            
-6
-           
-              
-               
-
-            
-  
-            
-               
-
-               
-               
-               
-            
-
-            
-            
-
-               
-
-                                            
-            
-11
-           
-              
-               
-
-            
-  
-            
-               
-
-               
-               
-               
-            
-
-            
-            
-
-               
-
-                                            
-            
-8
-           
-              
-               
-
-            
-  
-            
-               
-
-               
-               
-               
-            
-
-            
-            
-
-               
-
-                                            
-            
-12
-           
-              
-               
-
-            
-  
-            
-               
-
-               
-               
-               
-            
-
-            
-            
-
-               
-
-                                            
-            
-3
-           
-              
-               
-
-            
-  
-            
-               
-
-               
-               
-               
-            
-
-                  
-
-   
-
-
-
-
-Bunker (maximale Beladung: 500 kg)
-
-Rechte Klappe (Stromerzeuger)
-
-Siebtrommel mit Reinigungsbürste
-
-Förderband für Siebgut
-
-Klappbarer Haldenförderer für Siebgut
-
-Klappbarer Haldenförderer für Überkorn
-
-Seilwinde für Förderband für Siebgut
-
-Kettenlaufwerk
-
-Seilwinde für Förderband für Überkorn
+Fahrwerk mit Straßenzulassung
 
 Bedienteil
 
 Linke Klappe (Schaltschrank)
 
-Wartungstüre
+Handkurbel für Heckband
 
-Gremac e2+ (Hakenlift)
+Not-Aus am Maschinenheck
+
+Gremac e1k (kettenmobil)
 
 
 
@@ -1515,28 +989,6 @@ Gremac e2+ (Hakenlift)
          
 
          
-            
-
-               
-
-                                            
-            
-7
-           
-              
-               
-
-            
-  
-            
-               
-
-               
-               
-               
-            
-
-            
             
 
                
@@ -1565,7 +1017,190 @@ Gremac e2+ (Hakenlift)
 
                                             
             
+2
+           
+              
+               
+
+            
+  
+            
+               
+
+               
+               
+               
+            
+
+            
+            
+
+               
+
+                                            
+            
+3
+           
+              
+               
+
+            
+  
+            
+               
+
+               
+               
+               
+            
+
+            
+            
+
+               
+
+                                            
+            
+4
+           
+              
+               
+
+            
+  
+            
+               
+
+               
+               
+               
+            
+
+            
+            
+
+               
+
+                                            
+            
+5
+           
+              
+               
+
+            
+  
+            
+               
+
+               
+               
+               
+            
+
+            
+            
+
+               
+
+                                            
+            
+6
+           
+              
+               
+
+            
+  
+            
+               
+
+               
+               
+               
+            
+
+                  
+
+   
+
+
+
+
+
+
+
+
+   
+
+      
+
+      
+
+
+      
+
+   
+
+
+   
+
+      
+
+         
+
+         
+            
+
+               
+
+                                            
+            
 9
+           
+              
+               
+
+            
+  
+            
+               
+
+               
+               
+               
+            
+
+            
+            
+
+               
+
+                                            
+            
+2
+           
+              
+               
+
+            
+  
+            
+               
+
+               
+               
+               
+            
+
+            
+            
+
+               
+
+                                            
+            
+3
            
               
                
@@ -1653,7 +1288,124 @@ Gremac e2+ (Hakenlift)
 
                                             
             
+7
+           
+              
+               
+
+            
+  
+            
+               
+
+               
+               
+               
+            
+
+            
+            
+
+               
+
+                                            
+            
 8
+           
+              
+               
+
+            
+  
+            
+               
+
+               
+               
+               
+            
+
+            
+            
+
+               
+
+                                            
+            
+10
+           
+              
+               
+
+            
+  
+            
+               
+
+               
+               
+               
+            
+
+                  
+
+   
+
+
+
+
+Rechte Klappe (Stellplatz für Stromerzeuger)
+
+Bunker
+
+Siebtrommel mit Reinigungsbürste
+
+Förderband für Siebgut
+
+Förderband für Überkorn
+
+Kettenlaufwerk
+
+Linke Klappe (Schaltschrank)
+
+Bedienteil
+
+Handkurbel für Heckband
+
+Not-Aus am Maschinenheck
+
+Gremac e1h (Hakenmobil)
+
+
+
+
+
+   
+
+      
+
+      
+
+
+      
+
+   
+
+
+   
+
+      
+
+         
+
+         
+            
+
+               
+
+                                            
+            
+1
            
               
                
@@ -1712,57 +1464,6 @@ Gremac e2+ (Hakenlift)
                
             
 
-                  
-
-   
-
-
-
-
-
-
-
-
-   
-
-      
-
-      
-
-
-      
-
-   
-
-
-   
-
-      
-
-         
-
-         
-            
-
-               
-
-                                            
-            
-13
-           
-              
-               
-
-            
-  
-            
-               
-
-               
-               
-               
-            
-
             
             
 
@@ -1770,51 +1471,7 @@ Gremac e2+ (Hakenlift)
 
                                             
             
-1
-           
-              
-               
-
-            
-  
-            
-               
-
-               
-               
-               
-            
-
-            
-            
-
-               
-
-                                            
-            
-9
-           
-              
-               
-
-            
-  
-            
-               
-
-               
-               
-               
-            
-
-            
-            
-
-               
-
-                                            
-            
-2
+4
            
               
                
@@ -1859,116 +1516,6 @@ Gremac e2+ (Hakenlift)
                                             
             
 6
-           
-              
-               
-
-            
-  
-            
-               
-
-               
-               
-               
-            
-
-            
-            
-
-               
-
-                                            
-            
-11
-           
-              
-               
-
-            
-  
-            
-               
-
-               
-               
-               
-            
-
-            
-            
-
-               
-
-                                            
-            
-10
-           
-              
-               
-
-            
-  
-            
-               
-
-               
-               
-               
-            
-
-            
-            
-
-               
-
-                                            
-            
-12
-           
-              
-               
-
-            
-  
-            
-               
-
-               
-               
-               
-            
-
-            
-            
-
-               
-
-                                            
-            
-3
-           
-              
-               
-
-            
-  
-            
-               
-
-               
-               
-               
-            
-
-            
-            
-
-               
-
-                                            
-            
-7
            
               
                
@@ -1992,29 +1539,15 @@ Gremac e2+ (Hakenlift)
 
 Hakenliftrahmen
 
+Rechte Klappe (Stellplatz für Aggregat)
+
 Bunker
 
 Siebtrommel mit Reinigungsbürste
 
-Rechte Klappe (Stromerzeuger)
-
 Förderband für Siebgut
 
-Klappbarer Haldenförderer für Siebgut
-
-Klappbarer Haldenförderer für Überkorn
-
-Seilwinde für Förderband für Siebgut
-
-Aufnahme für Staplertransport
-
-Bedienteil
-
-Linke Klappe (Schaltschrank)
-
-Wartungstüre
-
-Seilwinde für Förderband für Überkorn
+Alle anderen Funktionselemente entsprechen der e1r/e1k.
 
 Inbetriebnahme
 
@@ -2462,28 +1995,6 @@ Die Funktionen der Maschine werden über die Bedieneinheit an der linken Maschin
 
                                             
             
-11
-           
-              
-               
-
-            
-  
-            
-               
-
-               
-               
-               
-            
-
-            
-            
-
-               
-
-                                            
-            
 9
            
               
@@ -2528,51 +2039,7 @@ Die Funktionen der Maschine werden über die Bedieneinheit an der linken Maschin
 
                                             
             
-12
-           
-              
-               
-
-            
-  
-            
-               
-
-               
-               
-               
-            
-
-            
-            
-
-               
-
-                                            
-            
-13
-           
-              
-               
-
-            
-  
-            
-               
-
-               
-               
-               
-            
-
-            
-            
-
-               
-
-                                            
-            
-14
+11
            
               
                
@@ -2612,10 +2079,6 @@ Siebtrommel Ein/Aus mit LED
 
 Siebtrommel Drehzahleinstellung
 
-Sammelband Ein/Aus mit LED
-
-Sammelband Drehzahleinstellung
-
 Feingutband Ein/Aus mit LED
 
 Feingutband Drehzahleinstellung
@@ -2624,11 +2087,9 @@ Feingutband Drehzahleinstellung
 
 Überkornband Drehzahleinstellung
 
-Reserve
-
 LED-Signale
 
-Stop/Reset-Taster (2)
+Stop/Reset-Taster (1)
 
 Blinkt rot: Not-Aus betätigt
 
@@ -2868,28 +2329,6 @@ Förderbänder
                
             
 
-            
-            
-
-               
-
-                                            
-            
-4
-           
-              
-               
-
-            
-  
-            
-               
-
-               
-               
-               
-            
-
                   
 
    
@@ -2901,11 +2340,9 @@ Die Maschine verfügt über vier Förderbänder
 
 Bunkerförderband
 
-Förderband zum Sammeln des Feingutes
+Förderband für Überkorn
 
 Förderband für Feingut
-
-Förderband für Überkorn
 
 Vorbeugende Maßnahmen
 
@@ -2916,6 +2353,8 @@ Kontrollieren Sie vor dem Beginn der Arbeiten die Spannung und den Gurtlauf des 
 Warten Sie regelmäßig die Abstreifer und Lager der Förderbänder.
 
 Ersetzen Sie frühzeitig verschlissene Abstreifer und Dichtungen.
+
+Schmieren Sie regelmäßig die Stellspindeln.
 
 Mögliche Ursachen
 
@@ -2976,7 +2415,7 @@ Der innen liegende Abstreifer ist schwimmend gelagert und liegt durch sein Eigen
 
 Siebtrommel
 
-Die Maschine verfügt über eine Siebtrommel. Aufgrund der Trommellänge ist der Siebkörper in zwei gleichgroße Teile unterteilt. Auf den Grundkörper werden entsprechend zwei Siebmatten mit der gewünschten Sieblochung aufgespannt. Alternativ sind Siebtrommeln mit fixer Lochung verfügbar.
+Die Maschine verfügt über eine Siebtrommel mit Kernlochung.  Auf den Grundkörper wird eine Siebmatte mit der gewünschten Sieblochung aufgespannt. Alternativ sind Siebtrommeln mit fixer Lochung verfügbar.
 
 
 
@@ -3044,28 +2483,6 @@ Die Maschine verfügt über eine Siebtrommel. Aufgrund der Trommellänge ist der
                
             
 
-            
-            
-
-               
-
-                                            
-            
-3
-           
-              
-               
-
-            
-  
-            
-               
-
-               
-               
-               
-            
-
                   
 
    
@@ -3073,9 +2490,7 @@ Die Maschine verfügt über eine Siebtrommel. Aufgrund der Trommellänge ist der
 
 
 
-Trommelkörper - Vordere Hälfte
-
-Trommelkörper - Hintere Hälfte
+Trommelkörper
 
 Reinigungsbürste
 
@@ -3171,28 +2586,6 @@ Betätigen Sie die Kabelfernbedienung nur, wenn der Gefahrenbereich eingesehen w
                                             
             
 2
-           
-              
-               
-
-            
-  
-            
-               
-
-               
-               
-               
-            
-
-            
-            
-
-               
-
-                                            
-            
-1
            
               
                
@@ -4512,6 +3905,145 @@ Die Reinigungsbürste unterliegt einem natürlichen Verschleiß. Bei erreichen e
 Fahrwerk + Beleuchtung (Nur radmobile Version)
 
 Die radmobile Maschine ist auf einem Fahrwerk der Firma Alko aufgebaut.
+
+
+
+
+
+   
+
+      
+
+      
+
+
+      
+
+   
+
+
+   
+
+      
+
+         
+
+         
+            
+
+               
+
+                                            
+            
+1
+           
+              
+               
+
+            
+  
+            
+               
+
+               
+               
+               
+            
+
+            
+            
+
+               
+
+                                            
+            
+2
+           
+              
+               
+
+            
+  
+            
+               
+
+               
+               
+               
+            
+
+            
+            
+
+               
+
+                                            
+            
+3
+           
+              
+               
+
+            
+  
+            
+               
+
+               
+               
+               
+            
+
+            
+            
+
+               
+
+                                            
+            
+3
+           
+              
+               
+
+            
+  
+            
+               
+
+               
+               
+               
+            
+
+            
+            
+
+               
+
+                                            
+            
+2
+           
+              
+               
+
+            
+  
+            
+               
+
+               
+               
+               
+            
+
+                  
+
+   
+
+
+
 
 Zugholm mit Auflaufeinrichtung
 
