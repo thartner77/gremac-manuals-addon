@@ -63,8 +63,10 @@ IMG_STYLE = (
 )
 ICON_STYLE = 'width:80px;height:auto;margin:.5rem 1rem .5rem 0;vertical-align:middle;'
 
-# Symbole die als kleine Icons erscheinen
+# Symbole die als kleine inline Icons im Text bleiben (NICHT ins images-Feld)
 ICON_FILES = {'W001-1.jpg', 'Information.jpg', 'Hochdruckreiniger.png'}
+# Diese Dateien werden im Content-HTML belassen und NICHT in extract_images_from_html extrahiert
+INLINE_ICONS = ICON_FILES
 
 
 # ─── PocketBase ───────────────────────────────────────────────────────────────
@@ -162,7 +164,22 @@ def clean_wp_html(html):
     html = re.sub(r'<h([23]) class="uagb-heading-text">', r'<h\1>', html)
     # WP Block Headings normalisieren
     html = re.sub(r'<h([23]) class="wp-block-heading[^"]*">', r'<h\1>', html)
-    # Figure/Figcaption
+    # Inline-Icons (W001-1, Information, Hochdruckreiniger) als kleine <img> erhalten
+    def replace_inline_icon(m):
+        full = m.group(0)
+        for icon in INLINE_ICONS:
+            if icon.replace('.jpg','').replace('.png','') in full:
+                return f'<img src="{IMAGES_BASE}/{icon}" alt="" style="{ICON_STYLE}">'
+        return ''
+
+    # Figure mit Inline-Icons → kleines img
+    html = re.sub(
+        r'<figure[^>]*>.*?</figure>',
+        replace_inline_icon,
+        html,
+        flags=re.DOTALL
+    )
+    # Restliche Figcaptions
     html = re.sub(r'<figcaption[^>]*>.*?</figcaption>', '', html, flags=re.DOTALL)
     html = re.sub(r'<figure[^>]*>', '', html)
     html = re.sub(r'</figure>', '', html)
@@ -203,9 +220,11 @@ def extract_images_from_html(html):
             alt = fname_clean.replace('-scaled', '')
             if alt in LOCAL_IMAGES:
                 fname_clean = alt
+        # Inline-Icons bleiben im Content-Text — nicht ins images-Feld extrahieren
+        if fname_clean in INLINE_ICONS:
+            continue
         local_path = f'{IMAGES_BASE}/{fname_clean}'
-        style = ICON_STYLE if fname_clean in ICON_FILES else IMG_STYLE
-        results.append({'path': local_path, 'filename': fname_clean, 'style': style})
+        results.append({'path': local_path, 'filename': fname_clean, 'style': IMG_STYLE})
     return results
 
 
@@ -234,8 +253,18 @@ def parse_sections(html):
             return
         body = '\n'.join(current_lines).strip()
         images = extract_images_from_html(body)
-        # Bilder aus Content entfernen → werden über images-Feld gerendert
-        body_no_img = re.sub(r'<img[^>]+>', '', body)
+        # NUR Block-Bilder aus Content entfernen (nicht Inline-Icons!)
+        # Inline-Icons (W001, Information, Hochdruckreiniger) bleiben im Content
+        def remove_non_inline_imgs(html):
+            def keep_or_remove(m):
+                src = re.search(r'src="([^"]*)"', m.group(0))
+                if src:
+                    fname = src.group(1).split('/')[-1]
+                    if any(icon in fname for icon in INLINE_ICONS):
+                        return m.group(0)  # Behalten
+                return ''  # Entfernen
+            return re.sub(r'<img[^>]+>', keep_or_remove, html)
+        body_no_img = remove_non_inline_imgs(body)
         body_no_img = re.sub(r'\n{3,}', '\n\n', body_no_img).strip()
         sections.append({
             'title': current_title,
