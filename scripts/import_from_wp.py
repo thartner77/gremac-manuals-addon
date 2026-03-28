@@ -484,16 +484,19 @@ def main():
                         block_id = f'dry_new_{sort_order}'
                     new_blocks += 1
                 else:
-                    # Gleiche oder keine Bilder → Block aktualisieren und wiederverwenden
+                    # Block wiederverwenden
                     block_id = existing['id']
                     update_data = {
                         'content_de': content_de or ' ',
                         'content_en': content_en or ' ',
                         'shared': is_shared,
-                        'images': image_paths,
-                        'image_alt_de': alt_de,
-                        'image_alt_en': alt_en,
                     }
+                    # Bilder nur aktualisieren wenn dieser Import welche hat
+                    # → kein Bild im aktuellen Manual = bestehendes Bild behalten
+                    if image_paths:
+                        update_data['images'] = image_paths
+                        update_data['image_alt_de'] = alt_de
+                        update_data['image_alt_en'] = alt_en
                     if not dry_run:
                         pb(f'/api/collections/kb_blocks/records/{block_id}', 'PATCH', update_data, token)
                     if is_shared:
