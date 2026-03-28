@@ -200,14 +200,28 @@ def generate_markdown(manual, blocks_ordered, lang):
         if title_b_de or title_b_en:
             content_parts.append(heading_tag(level, title_b_de, title_b_en, lang))
         
-        # Inhalt
-        if content.strip():
-            content_parts.append("\n" + content.strip() + "\n")
-        
-        # Bilder nach dem Textinhalt
+        # Bilder: Wenn Content "Abb." enthält, Bild direkt nach dem Abb.-Absatz einsetzen
+        # Sonst: Bilder nach dem gesamten Content
         img_html = render_images(images, alt_de, alt_en, lang)
-        if img_html:
-            content_parts.append(img_html)
+        
+        if content.strip() and img_html and "Abb." in content:
+            import re as _re
+            # Finde den letzten "Abb."-Absatz und füge Bild direkt danach ein
+            # Pattern: <p ...>Abb. ...</p>
+            def insert_after_abb(text, img):
+                abb_pattern = _re.compile(r'(<p[^>]*>[^<]*Abb\.[^<]*</p>)', _re.IGNORECASE)
+                matches = list(abb_pattern.finditer(text))
+                if matches:
+                    last = matches[-1]
+                    return text[:last.end()] + "\n" + img + "\n" + text[last.end():]
+                return text + "\n" + img
+            content_with_img = insert_after_abb(content.strip(), img_html.strip())
+            content_parts.append("\n" + content_with_img + "\n")
+        else:
+            if content.strip():
+                content_parts.append("\n" + content.strip() + "\n")
+            if img_html:
+                content_parts.append(img_html)
     
     return "\n".join(content_parts)
 
