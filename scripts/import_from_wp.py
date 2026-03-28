@@ -164,18 +164,33 @@ def clean_wp_html(html):
     html = re.sub(r'<h([23]) class="uagb-heading-text">', r'<h\1>', html)
     # WP Block Headings normalisieren
     html = re.sub(r'<h([23]) class="wp-block-heading[^"]*">', r'<h\1>', html)
-    # Inline-Icons (W001-1, Information, Hochdruckreiniger) als kleine <img> erhalten
-    def replace_inline_icon(m):
+    # Figure-Tags verarbeiten:
+    # - Inline-Icons (W001, Information, Hochdruckreiniger) → kleines inline img
+    # - Alle anderen Bilder → normales img (wird später von extract_images_from_html verarbeitet)
+    def replace_figure(m):
         full = m.group(0)
+        # Inline-Icon?
         for icon in INLINE_ICONS:
             if icon.replace('.jpg','').replace('.png','') in full:
                 return f'<img src="{IMAGES_BASE}/{icon}" alt="" style="{ICON_STYLE}">'
+        # Normales Upload-Bild extrahieren
+        img_m = re.search(
+            r'<img[^>]+src="(https://service\.h2protech\.de/wp-content/uploads/[^"]+\.(?:jpg|png|webp))"',
+            full
+        )
+        if img_m:
+            src = img_m.group(1)
+            fname = src.split('/')[-1].split('?')[0]
+            fname = re.sub(r'-e\d{13}', '', fname)
+            fname = re.sub(r'-\d+x\d+', '', fname)
+            fname = fname.replace('-scaled', '') if fname.replace('-scaled','') else fname
+            return f'<img src="{IMAGES_BASE}/{fname}" alt="{fname}" style="{IMG_STYLE}">'
         return ''
 
-    # Figure mit Inline-Icons → kleines img
+    # Figure → img (VOR div-Bereinigung!)
     html = re.sub(
         r'<figure[^>]*>.*?</figure>',
-        replace_inline_icon,
+        replace_figure,
         html,
         flags=re.DOTALL
     )
@@ -415,7 +430,9 @@ def main():
             alt_de = ' | '.join(img['filename'].rsplit('.', 1)[0] for img in images) if images else ''
             alt_en = alt_de  # Vorerst gleich, kann später manuell gepflegt werden
 
-            is_shared = title_lower in shared_titles
+            # Nur als shared markieren wenn der Block KEINE Bilder hat
+            # Blöcke mit Bildern sind maschinenspezifisch → nie shared
+            is_shared = (title_lower in shared_titles) and not image_paths
 
             # Überspringe leere Blöcke ohne Titel und Inhalt
             if not title_de and not content_de.strip():
@@ -443,23 +460,45 @@ def main():
                 block_id = shared_block_cache[title_lower]
                 reused_blocks += 1
             elif title_lower in blocks_by_title:
-                # Bestehenden Block aktualisieren (falls Bilder fehlen)
                 existing = blocks_by_title[title_lower]
-                block_id = existing['id']
-                # Aktualisiere Inhalt + Bilder
-                update_data = {
-                    'content_de': content_de or ' ',
-                    'content_en': content_en or ' ',
-                    'shared': is_shared,
-                    'images': image_paths,
-                    'image_alt_de': alt_de,
-                    'image_alt_en': alt_en,
-                }
-                if not dry_run:
-                    pb(f'/api/collections/kb_blocks/records/{block_id}', 'PATCH', update_data, token)
-                if is_shared:
-                    shared_block_cache[title_lower] = block_id
-                reused_blocks += 1
+                existing_images = existing.get('images') or []
+                # Bilder-Konflikt: existierender Block hat andere Bilder → neuer Block
+                # (maschinenspezifische Abschnitte mit gleichem Titel aber verschiedenen Bildern)
+                if image_paths and existing_images and set(image_paths) != set(existing_images):
+                    cat = guess_category(title_de, content_de)
+                    block_data = {
+                        'title_de': title_de or f'Block {sort_order}',
+                        'title_en': title_en or title_de or f'Block {sort_order}',
+                        'content_de': content_de or ' ',
+                        'content_en': content_en or ' ',
+                        'category': cat,
+                        'shared': False,
+                        'images': image_paths,
+                        'image_alt_de': alt_de,
+                        'image_alt_en': alt_en,
+                    }
+                    if not dry_run:
+                        result = pb('/api/collections/kb_blocks/records', 'POST', block_data, token)
+                        block_id = result['id']
+                    else:
+                        block_id = f'dry_new_{sort_order}'
+                    new_blocks += 1
+                else:
+                    # Gleiche oder keine Bilder → Block aktualisieren und wiederverwenden
+                    block_id = existing['id']
+                    update_data = {
+                        'content_de': content_de or ' ',
+                        'content_en': content_en or ' ',
+                        'shared': is_shared,
+                        'images': image_paths,
+                        'image_alt_de': alt_de,
+                        'image_alt_en': alt_en,
+                    }
+                    if not dry_run:
+                        pb(f'/api/collections/kb_blocks/records/{block_id}', 'PATCH', update_data, token)
+                    if is_shared:
+                        shared_block_cache[title_lower] = block_id
+                    reused_blocks += 1
             else:
                 # Neuer Block
                 cat = guess_category(title_de, content_de)
