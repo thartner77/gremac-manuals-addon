@@ -128,6 +128,30 @@ def fetch_wp(slug, lang='de'):
 
 def clean_wp_html(html):
     """Bereinigt WordPress Gutenberg/UAGB-HTML."""
+    # IMH-6310 Hotspot-Blöcke: Hauptbild extrahieren, Rest entfernen
+    # Das Hauptbild steckt in einem <img> aus /wp-content/uploads/ (nicht Plugin-Icons)
+    def extract_hotspot_img(m):
+        block = m.group(0)
+        # Nur Upload-Bilder (nicht Plugin-Assets wie zoom-in.png)
+        imgs = re.findall(
+            r'<img[^>]+src="(https://service\.h2protech\.de/wp-content/uploads/[^"]+\.(?:jpg|png|webp))"',
+            block
+        )
+        if imgs:
+            # Erstes Upload-Bild = Hauptbild (nicht die srcset-Varianten)
+            fname = imgs[0].split('/')[-1].split('?')[0]
+            fname_clean = re.sub(r'-e\d{13}', '', fname)
+            fname_clean = re.sub(r'-\d+x\d+', '', fname_clean)
+            return f'\n<img src="{IMAGES_BASE}/{fname_clean}" alt="" style="{IMG_STYLE}">\n'
+        return ''
+
+    html = re.sub(
+        r'<div[^>]+class="imh-6310-annotation-box-wrapper[^"]*"[^>]*>.*?(?=<h[23]|<p class="has-text|</section|$)',
+        extract_hotspot_img,
+        html,
+        flags=re.DOTALL
+    )
+
     # WP Block-Wrapper
     html = re.sub(r'<div[^>]+class="[^"]*wp-block[^"]*"[^>]*>', '', html)
     html = re.sub(r'<div[^>]+class="[^"]*uagb[^"]*"[^>]*>', '', html)
@@ -136,6 +160,8 @@ def clean_wp_html(html):
     html = re.sub(r'<div[^>]+style="height:\d+px"[^>]*></div>', '', html)
     # UAGB Überschriften normalisieren
     html = re.sub(r'<h([23]) class="uagb-heading-text">', r'<h\1>', html)
+    # WP Block Headings normalisieren
+    html = re.sub(r'<h([23]) class="wp-block-heading[^"]*">', r'<h\1>', html)
     # Figure/Figcaption
     html = re.sub(r'<figcaption[^>]*>.*?</figcaption>', '', html, flags=re.DOTALL)
     html = re.sub(r'<figure[^>]*>', '', html)
@@ -155,19 +181,28 @@ def extract_images_from_html(html):
     """
     Extrahiert img-Tags, normalisiert auf lokale Dateipfade.
     Gibt Liste von dicts: {path, filename, style}
+    Filtert Plugin-Assets heraus (nur /wp-content/uploads/ oder lokale manuals-Pfade).
     """
     results = []
     for m in re.finditer(r'<img[^>]+src="([^"]*)"[^>]*>', html, re.IGNORECASE):
         src = m.group(1)
+        # Plugin-Assets herausfiltern
+        if '/plugins/' in src:
+            continue
+        if 'zoom-in' in src or 'zoom-out' in src:
+            continue
         fname = src.split('/')[-1].split('?')[0]
-        # WP Timestamp-Suffix entfernen: -e1709333118973
+        if not fname or '.' not in fname:
+            continue
+        # WP Timestamp-Suffix entfernen
         fname_clean = re.sub(r'-e\d{13}', '', fname)
-        # Skaliertungs-Suffix entfernen: -scaled → normal
+        # Größen-Suffix entfernen: -1024x661
+        fname_clean = re.sub(r'-\d+x\d+', '', fname_clean)
+        # Scaling-Suffix
         if fname_clean not in LOCAL_IMAGES:
             alt = fname_clean.replace('-scaled', '')
             if alt in LOCAL_IMAGES:
                 fname_clean = alt
-        # Lokaler Pfad
         local_path = f'{IMAGES_BASE}/{fname_clean}'
         style = ICON_STYLE if fname_clean in ICON_FILES else IMG_STYLE
         results.append({'path': local_path, 'filename': fname_clean, 'style': style})
@@ -387,11 +422,10 @@ def main():
                     'content_de': content_de or ' ',
                     'content_en': content_en or ' ',
                     'shared': is_shared,
+                    'images': image_paths,
+                    'image_alt_de': alt_de,
+                    'image_alt_en': alt_en,
                 }
-                if image_paths and not existing.get('images'):
-                    update_data['images'] = image_paths
-                    update_data['image_alt_de'] = alt_de
-                    update_data['image_alt_en'] = alt_en
                 if not dry_run:
                     pb(f'/api/collections/kb_blocks/records/{block_id}', 'PATCH', update_data, token)
                 if is_shared:
